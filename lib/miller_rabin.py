@@ -1,7 +1,5 @@
 from random import randint
 
-small_primes = (2,3,5,7,11,13,17,19,23,29,31,37,41,
-    43,47,53,59,61,67,71,73,79,83,89,97)
 
 def try_composite(a, d, n, s):
     '''Test the base a to see whether it is a witness for the compositeness
@@ -27,6 +25,9 @@ def is_probable_prime(n, trials=5):
 
     assert n >= 2
 
+    if n in (2, 3):
+        return True
+
     if n in small_primes:
         return True
 
@@ -38,7 +39,6 @@ def is_probable_prime(n, trials=5):
     for prime in small_primes:
         if not n%prime:
             return False
-
 
     # Write n-1 as 2^s * d
     # Repeatedly try to divide n-1 by 2
@@ -60,3 +60,21 @@ def is_probable_prime(n, trials=5):
 
     # No base tested showed n as composite, n is probably prime.
     return True
+
+
+def gen_primes():
+    for prime in small_primes:
+        yield prime
+
+    i = small_primes[-1]
+    while True:
+        i += 2
+        if is_probable_prime(i):
+            yield i
+
+
+# To avoid as much hard-coding as possible generate the small_primes list.
+small_primes = []
+for i in range(2, 100):
+    if is_probable_prime(i):
+        small_primes.append(i)
