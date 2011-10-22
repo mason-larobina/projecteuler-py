@@ -1,12 +1,12 @@
-/* (C) Mason Larobina <mason.larobina@gmail.com>
- * clang -Wall -lm -std=c99 -o a 13.c && time ./a */
+// (C) Mason Larobina <mason.larobina@gmail.com>
+// clang -Wall -lm -std=c99 -o a 13.c && time ./a
+
+// === Problem 13 ===
+// Work out the first ten digits of the sum of the following one-hundred
+// 50-digit numbers.
 
 #include <stdio.h>
 #include <math.h>
-
-/* === Problem 13 ===
- * Work out the first ten digits of the sum of the following one-hundred
- * 50-digit numbers. */
 
 const char *nums[] = {
     "37107287533902102798797998220837590246510135740250",
