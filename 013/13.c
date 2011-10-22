@@ -6,7 +6,8 @@
 // 50-digit numbers.
 
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
+#include <stdlib.h>
 
 const char *nums[] = {
     "37107287533902102798797998220837590246510135740250",
@@ -115,15 +116,16 @@ int
 main(void)
 {
     long total = 1;
-    int c;
+    char a[12];
 
-    for (int i = 0; i < 100; i++)
-        for (int j = 0; j <= 11; j++)
-            if ((c = nums[i][j] - '0'))
-                total += c * pow(10, 11 - j);
+    for (int i = 0; i < 100; i++) {
+        strncpy(a, nums[i], 11);
+        total += atol(a);
+    }
 
     char out[11];
     snprintf(out, 11, "%ld", total);
+
     printf("%s\n", out);
     return 0;
 }
