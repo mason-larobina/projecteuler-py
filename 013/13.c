@@ -116,7 +116,7 @@ int
 main(void)
 {
     long total = 1;
-    char a[12];
+    char a[12] = { [11] = '\0' };
 
     for (int i = 0; i < 100; i++) {
         strncpy(a, nums[i], 11);
